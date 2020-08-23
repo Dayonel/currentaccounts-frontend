@@ -1,0 +1,19 @@
+<h1>Add bank account</h1>
+<mat-card class="card-wrapper mb-2">
+    <form [formGroup]="bankAccountForm" (keydown.enter)="formSubmit()">
+        <div class="title-label mb-2">
+            <mat-label>Open your new current account</mat-label>
+        </div>
+        <mat-form-field class="full-width">
+            <mat-label>CustomerId</mat-label>
+            <input matInput placeholder="1, 2, 3..." formControlName="customerID" />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Initial credit</mat-label>
+            <input matInput placeholder="50..." formControlName="initialCredit" />
+        </mat-form-field>
+        <div class="flex-r">
+            <button mat-raised-button color="basic" (click)="formSubmit()">Submit</button>
+        </div>
+    </form>
+</mat-card>
