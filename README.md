@@ -1,27 +1,36 @@
-# CurrentaccountsFrontend
+# CurrentAccounts
+CurrentAccounts live version can be found here:
+[https://current-accounts.herokuapp.com/](https://current-accounts.herokuapp.com/)
+![live version](https://imgur.com/eP0swRJ.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+### Steps to execute project locally
 
-## Development server
+#### 1. Download and install NodeJS 12.18.3 LTS
+https://nodejs.org/dist/v12.18.3/node-v12.18.3-x64.msi
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### 2. Run the project
+Navigate to the project root, for example:
+![project root](https://imgur.com/znjBFaf.png)
 
-## Code scaffolding
+> C:\git\currentaccounts-frontend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Open a console in project root and execute:
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    npm i
 
-## Running unit tests
+    ng serve
+![ng serve](https://imgur.com/FWWutY7.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### 3. Localhost
+Navigate to:
+[http://localhost:4200/](http://localhost:4200/)
+You can test customers with Id(s) 1 to 5.
+![bank accounts customer 2](https://imgur.com/oCVWU0S.png)
 
-## Running end-to-end tests
+To create a bank account, click in Bank Accounts button in toolbar:
+![bank accounts](https://imgur.com/Oig0Y71.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Is possible to create bank accounts for customer Id(s) 1 to 5.
+Initial credit parameter is optional, if not provided, account will be created without transactions.
+If initial credit is provided, a transaction will be sent to that bank account.
