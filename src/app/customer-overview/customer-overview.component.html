@@ -1,1 +1,107 @@
-<h2>Customer overview</h2>
+<h1>Customer overview</h1>
+<mat-card class="card-wrapper mb-2">
+    <form [formGroup]="customerForm" (keydown.enter)="formSubmit()">
+        <div class="title-label mb-2">
+            <mat-label>Lookup your current account</mat-label>
+        </div>
+        <mat-form-field class="full-width">
+            <mat-label>CustomerId</mat-label>
+            <input matInput placeholder="1, 2, 3..." formControlName="id" />
+        </mat-form-field>
+        <div class="flex-r">
+            <button mat-raised-button color="basic" (click)="formSubmit()">Submit</button>
+        </div>
+    </form>
+</mat-card>
+<div>
+    <mat-card *ngIf="customer" class="card-wrapper">
+        <div class="title-label mb-2">
+            <mat-label>Customer information</mat-label>
+        </div>
+        <mat-table #table [dataSource]="[customer]" matSort>
+            <mat-header-row *matHeaderRowDef="customerColumns"></mat-header-row>
+            <mat-row class="pointer" *matRowDef="let row; columns: customerColumns; let customer"></mat-row>
+
+            <ng-container matColumnDef="Id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> <span> Id </span></mat-header-cell>
+                <mat-cell *matCellDef="let customer">
+                    <span [matTooltip]="customer.id" class="text-truncate truncate-max-width">
+                        {{customer.id}}
+                    </span>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> <span> Name </span></mat-header-cell>
+                <mat-cell *matCellDef="let customer">
+                    <span [matTooltip]="customer.name" class="text-truncate truncate-max-width">
+                        {{customer.name}}
+                    </span>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Surname">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> <span> Surname </span></mat-header-cell>
+                <mat-cell *matCellDef="let customer">
+                    <span [matTooltip]="customer.surname" class="text-truncate truncate-max-width pointer">
+                        {{customer.surname}}
+                    </span>
+                </mat-cell>
+            </ng-container>
+        </mat-table>
+    </mat-card>
+
+    <mat-card *ngIf="customer" class="card-wrapper mt-2">
+        <div class="title-label mb-2">
+            <mat-label>Bank accounts</mat-label>
+        </div>
+        <div class="accounts" *ngFor="let bankAccount of customer.bankAccounts">
+            <div class="mt-2">
+                <ng-container>
+                    <div class="title-label">
+                        <mat-label>Id: </mat-label>
+                        <span class="flex-r"> {{bankAccount.id}} </span>
+                    </div>
+                </ng-container>
+                <ng-container>
+                    <div class="title-label">
+                        <mat-label>Balance: </mat-label>
+                        <span class="flex-r"> {{bankAccount.balance}} </span>
+                    </div>
+                </ng-container>
+
+                <div *ngIf="bankAccount.transactions.length > 0">
+                    <div class="title-label mb-2">
+                        <mat-label>Transactions</mat-label>
+                    </div>
+                    <mat-card>
+                        <mat-table #table [dataSource]="bankAccount.transactions" matSort>
+                            <mat-header-row *matHeaderRowDef="transactionColumns"></mat-header-row>
+                            <mat-row class="pointer" *matRowDef="let row; columns: transactionColumns; let transaction">
+                            </mat-row>
+
+                            <ng-container matColumnDef="Id">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> <span> Id </span></mat-header-cell>
+                                <mat-cell *matCellDef="let transaction">
+                                    <span [matTooltip]="transaction.id" class="text-truncate truncate-max-width">
+                                        {{transaction.id}}
+                                    </span>
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Amount">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> <span> Amount </span>
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let transaction">
+                                    <span [matTooltip]="transaction.amount" class="text-truncate truncate-max-width">
+                                        {{transaction.amount}}
+                                    </span>
+                                </mat-cell>
+                            </ng-container>
+                        </mat-table>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

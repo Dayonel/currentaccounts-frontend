@@ -1,0 +1,47 @@
+.flex-r {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mb-2 {
+    margin-bottom: 2vh;
+}
+
+.mt-2 {
+    margin-top: 2vh;
+}
+
+.title-label {
+    display: flex;
+    justify-content: flex-start;
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: 100;
+}
+
+.card-wrapper {
+    min-width: 15vw;
+}
+
+.full-width {
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 100;
+}
+
+.text-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.truncate-max-width {
+    max-width: 90%;
+}
+
+.pointer {
+    cursor: pointer;
+}
